@@ -4,10 +4,10 @@
   "description": "LD Node.js & Express CRUD REST API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec ts-node-esm ./src/index.ts --watch src",
     "format": "prettier --write src/**/*.ts{,x}",
-    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}"
+    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}",
+    "test": "jest -c jest.config.ts"
   },
   "keywords": [],
   "author": "",
