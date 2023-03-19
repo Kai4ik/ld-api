@@ -23,7 +23,7 @@ const postItem = async (req: Request, res: Response) => {
   }
   try {
     const newItem = await Item.create(itemData);
-    logger.error(newItem);
+    logger.info(newItem);
     return res.status(201).json({
       status: "success",
       itemID: newItem.id,
