@@ -3,6 +3,9 @@ import cors from "cors";
 import helmet from "helmet";
 import bodyParser from "body-parser";
 import "dotenv/config";
+import { pino } from "pino";
+
+const logger = pino();
 
 import { verifyUser } from "./jwt_verify.js";
 import startPostgres from "./db/index.js";
@@ -27,6 +30,7 @@ app.use(bodyParser.json());
 app.use(async (req: Request, res, next) => {
   const authHeader = req.headers.authorization;
   if (authHeader !== undefined) {
+    logger.info(authHeader);
     const response = await verifyUser(authHeader.split(" ")[1]);
     if (response.verified) {
       const payload = response.payload;
