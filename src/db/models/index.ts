@@ -10,6 +10,7 @@ export const sq_connection = new Sequelize(
   {
     host: config.host,
     dialect: config.dialect,
+    logging: config.logging,
     models: [Item, Order],
     pool: {
       max: 5,
