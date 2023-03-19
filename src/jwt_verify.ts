@@ -10,11 +10,9 @@ export const verifyUser = async (token: string) => {
     clientId: process.env["USER_POOL_CLIENT_ID"] as string,
   });
   try {
-    logger.info(`dfgd ${token}kaikai`);
     const payload = await verifier.verify(token);
     return { payload: payload, verified: true };
   } catch (e) {
-    logger.error(e);
     logger.info("Token validation failed!");
     return { error: e, verified: false };
   }
