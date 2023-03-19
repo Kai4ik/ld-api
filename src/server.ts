@@ -39,7 +39,7 @@ app.use(async (req: Request, res, next) => {
       res.status(401).json({
         status: "error",
         error: {
-          message: "Not Authorized",
+          message: "Not Authorized. Token is not valid",
           code: 401,
         },
       });
@@ -48,7 +48,7 @@ app.use(async (req: Request, res, next) => {
     res.status(401).json({
       status: "error",
       error: {
-        message: "Not Authorized",
+        message: "Not Authorized. Authorization header is not set",
         code: 401,
       },
     });
@@ -65,7 +65,7 @@ app.use((_req: Request, res: Response) => {
   res.status(404).json({
     status: "error",
     error: {
-      message: "Not Found",
+      message: "Route Not Found",
       code: 404,
     },
   });
