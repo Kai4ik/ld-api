@@ -31,7 +31,10 @@ jobs:
         run: npm run lint
 
   unit-tests:
-    name: Unit Tests
+    name: Unit Testss
+    env:
+      USER_POOL_ID: us-east-1_uqaRFvTEK
+      USER_POOL_CLIENT_ID: 2h08m5mvr7k95hp5pa8ktnuolf
     runs-on: ubuntu-latest
 
     services:
