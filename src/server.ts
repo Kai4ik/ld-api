@@ -33,6 +33,7 @@ app.use(async (req: Request, res, next) => {
     const response = await verifyUser(authHeader.split(" ")[1]);
     if (response.verified) {
       const payload = response.payload;
+      logger.info(payload);
       if (payload !== undefined) {
         res.locals.user = payload.email;
         res.locals.role = payload["custom:role"];
