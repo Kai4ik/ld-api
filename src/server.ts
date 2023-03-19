@@ -2,7 +2,7 @@ import express, { Express, Response, Request } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import bodyParser from "body-parser";
-import * as dotenv from "dotenv";
+import "dotenv/config";
 
 import { verifyUser } from "./jwt_verify.js";
 import startPostgres from "./db/index.js";
@@ -15,7 +15,6 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
-dotenv.config();
 startPostgres();
 
 // Use CORS middleware so we can make requests across origins
