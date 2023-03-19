@@ -1,7 +1,7 @@
 import express, { Response, Request, NextFunction } from "express";
 import postItem from "./api/post_item.js";
 import deleteItem from "./api/delete_item.js";
-// import getAllItems from "./api/get_items.js";
+import getAllItems from "./api/get_items.js";
 
 // Create a router that we can use to mount our API
 const router = express.Router();
@@ -22,6 +22,6 @@ const ifSeller = (req: Request, res: Response, next: NextFunction) => {
 
 router.post("/items", ifSeller, postItem);
 router.delete("/items", ifSeller, deleteItem);
-//router.get("/items", getAllItems);
+router.get("/items", getAllItems);
 
 export default router;
