@@ -32,5 +32,14 @@ export const seedItems = () => {
       boughtBy: "test_buyer@gmail.com",
       orderId: "9f3be4bc-c619-11ed-afa1-0242ac120002",
     },
+    {
+      id: "6a4aefb2-c614-11ed-afa1-0242ac120002",
+      itemTitle: "Funkt Pop Velociraptor Collectible Figure",
+      itemDescription:
+        "From Jurassic World 2, Blue (New Pose), as a stylized POP vinyl from Funko! Figure stands 3 3/4 inches and comes in a window display box",
+      itemPrice: 23.5,
+      itemStatus: "on sale",
+      soldBy: "test_seller2@gmail.com",
+    },
   ]);
 };
