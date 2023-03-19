@@ -2,17 +2,15 @@ import request, { Response } from "supertest";
 import app from "../src/server.js";
 import { getJwt } from "../src/utils/cognito_test.js";
 
-describe("POST /v1/api/items", () => {
+describe("DELETE /v1/api/items", () => {
   // Invalid user role - buyer cannot delete item
   test("invalid role - buyer", async () => {
     const token = await getJwt("test_buyer@gmail.com", "12==qwOP");
     const res: Response = await request(app)
       .del("/v1/api/items")
       .set("Authorization", `Bearer ${token.token}`)
-      .set("Content-Type", "application/json")
-      .send({
-        role: "buyer",
-      });
+      .set("Content-Type", "application/json");
+
     expect(res.statusCode).toBe(401);
     expect(res.body.error.message).toBe(
       "Not Authorized to perform this action. You should be logged in as a seller"
@@ -28,7 +26,6 @@ describe("POST /v1/api/items", () => {
       .set("Authorization", `Bearer ${token.token}`)
       .send({
         itemID: "8539a626-c619-113d-afa1-0242ac120002",
-        role: "seller",
       });
     expect(res.statusCode).toBe(400);
     expect(res.body.error.message).toBe("Item does not exist");
@@ -42,7 +39,6 @@ describe("POST /v1/api/items", () => {
       .set("Authorization", `Bearer ${token.token}`)
       .send({
         itemID: "8539a626-c619-113d-af02",
-        role: "seller",
       });
     expect(res.statusCode).toBe(500);
     expect(res.body.error.message).toBe(
@@ -58,7 +54,6 @@ describe("POST /v1/api/items", () => {
       .set("Authorization", `Bearer ${token.token}`)
       .send({
         itemID: "8539a626-c619-11ed-afa1-0242ac120002",
-        role: "seller",
       });
     expect(res.statusCode).toBe(204);
   });

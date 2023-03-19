@@ -10,7 +10,7 @@ const logger = pino();
 const postItem = async (req: Request, res: Response) => {
   const itemData = req.body;
   itemData.id = uuidv4();
-  delete itemData.role;
+  itemData.soldBy = res.locals.user;
   const { error } = itemDataSchema.validate(itemData);
   if (error !== undefined) {
     return res.status(400).json({
