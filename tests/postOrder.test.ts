@@ -43,6 +43,6 @@ describe("GET /v1/api/items", () => {
       });
     console.log(res.body);
     expect(res.statusCode).toBe(201);
-    expect(res.body).toHaveProperty("orderId");
+    expect(res.body).toHaveProperty("orderID");
   });
 });
