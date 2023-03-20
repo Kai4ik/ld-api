@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres_admin
+      POSTGRES_PASSWORD: 12qw==AS
+    ports:
+      - "5432:5432"
+  app:
+    container_name: express-app
+    build: .
+    environment:
+      PORT: 8080
+      DB_DBNAME: postgres
+      DB_HOST: db
+      DB_PASSWORD: 12qw==AS
+      DB_USER: postgres_admin
+      USER_POOL_ID: us-east-1_uqaRFvTEK
+      USER_POOL_CLIENT_ID: 2h08m5mvr7k95hp5pa8ktnuolf
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
