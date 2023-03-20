@@ -2,9 +2,9 @@ import request, { Response } from "supertest";
 import app from "../src/server.js";
 import { getJwt } from "../src/utils/cognito_test.js";
 
-describe("GET /v1/api/items", () => {
+describe("POST /v1/api/orders", () => {
   // Invalid user role - seller cannot place an order
-  test("invalid role - buyer", async () => {
+  test("invalid role - seller", async () => {
     const token = await getJwt("test_seller@gmail.com", "12==qwOP");
     const res: Response = await request(app)
       .post("/v1/api/orders")
