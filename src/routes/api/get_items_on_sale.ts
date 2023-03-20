@@ -6,9 +6,13 @@ import Item from "../../db/models/items.js";
 
 const logger = pino();
 
-const getAllItems = async (req: Request, res: Response) => {
+const getAllItemsOnSale = async (req: Request, res: Response) => {
   try {
-    const items = await Item.findAll();
+    const items = await Item.findAll({
+      where: {
+        itemStatus: "on sale",
+      },
+    });
     return res.status(200).json({
       status: "success",
       items: items,
@@ -29,4 +33,4 @@ const getAllItems = async (req: Request, res: Response) => {
   }
 };
 
-export default getAllItems;
+export default getAllItemsOnSale;
