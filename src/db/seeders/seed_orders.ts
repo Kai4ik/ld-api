@@ -5,7 +5,7 @@ export const seedOrders = () => {
   queryInterface.bulkInsert("orders", [
     {
       id: "9f3be4bc-c619-11ed-afa1-0242ac120002",
-      orderDate: new Date(),
+      orderDate: new Date("2022-3-16"),
       orderBy: "test_buyer@gmail.com",
     },
   ]);

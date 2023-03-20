@@ -2,7 +2,7 @@ import { Response, Request } from "express";
 import { v4 as uuidv4 } from "uuid";
 
 import { pino } from "pino";
-import { Op, DatabaseError } from "sequelize";
+import { DatabaseError } from "sequelize";
 import { orderDataSchema } from "../../schemas/order.js";
 import Order from "../../db/models/order.js";
 import Item from "../../db/models/items.js";
@@ -32,9 +32,10 @@ const postOrder = async (req: Request, res: Response) => {
   try {
     const foundItems = await Item.findAndCountAll({
       where: {
-        [Op.and]: itemsIDs,
+        id: req.body.itemsIDs,
       },
     });
+
     if (foundItems.count === itemsIDs.length) {
       const newOrder = await Order.create(orderData);
       logger.info(newOrder);
@@ -48,7 +49,7 @@ const postOrder = async (req: Request, res: Response) => {
         },
         {
           where: {
-            [Op.and]: itemsIDs,
+            id: req.body.itemsIDs,
           },
         }
       );
