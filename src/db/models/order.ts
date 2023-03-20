@@ -6,7 +6,6 @@ interface OrderAttributes {
   id: string;
   orderDate: Date;
   orderBy: string;
-  items: Item[];
 }
 
 type OrderCreationAttributes = Optional<OrderAttributes, "id">;
